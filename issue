@@ -1,0 +1,7 @@
+For the MR and testing:
+
+"The MR involves a tech risk item related to setting httpSecure to true. To test it, please run the Autosys job named 'xyz' and verify the functionality. You can also run the job locally. I've created a Confluence page with more details on the testing process."
+
+For the httpSecure change on the mock service:
+
+"Since the MR is raising the change to set httpSecure to true for the mockservice API, I suggest ensuring this setting is correctly applied. Please test by hitting the API to verify the change behaves as expected."
