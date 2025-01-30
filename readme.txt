@@ -1,94 +1,20 @@
-Contingency Design: Handling UI Downtime with SFTP-Based Processing
-Problem Statement
-When the Mosaic UI is down, clients need an alternative way to send trades. The proposed contingency solution allows clients to upload files via SFTP, which are then processed and pushed to the backend Mosaic APIs. The design ensures scalability, extensibility, and supports future integrations with other trade channels like EMS queues, REST APIs, or additional file-based systems.
+Impact
+GS Funds document links were not visible on the Mosaic UI post-release.
+The issue was resolved by executing a pre-existing DACT query to insert missing records.
+Root Cause Analysis (RCA)
+Background:
 
-Proposed Workflow
-SFTP File Upload:
+A new table was created to store link mappings as part of the system enhancement.
+All existing Non-GS Fund links were successfully migrated to the new table during the release.
+For GS Funds, the plan was to refresh and migrate data by running an Autosys job post-release.
+Since these GS Fund links had not been refreshed for several months, most of the data was assumed to be invalid.
+Cause of the Issue:
 
-Clients upload trade files to a secure SFTP server.
-File Ingestion Service:
-
-Monitors the SFTP server for new files.
-Validates files (e.g., format, size, metadata).
-Passes files and metadata to the Transformation Service.
-Transformation Service:
-
-Parses the file and identifies the format (e.g., CSV, JSON, XML).
-Transforms the data into a standard trade object or payload.
-Sends the transformed object to the Dispatcher Service.
-Dispatcher Service:
-
-Implements the Publisher-Subscriber Pattern to publish transformed data as an event to a queue or topic.
-Enriches the event with metadata, such as:
-Channel: e.g., MOSAIC_DOWN, EMS, FILE_BASED.
-Event Type: e.g., CONTINGENCY, REAL_TIME.
-Queue/Topic:
-
-Serves as a decoupling layer between the dispatcher and consumer services.
-Ensures durability, scalability, and retry mechanisms.
-Consumer Service:
-
-Implements the Strategy Pattern to dynamically process events based on the Channel and Event Type.
-Processes the event using a Plugin-Based Architecture:
-Example:
-If channel = MOSAIC_DOWN, it calls Mosaic APIs to resume trade processing.
-If channel = EMS, it routes the trade to the EMS queue.
-
-
-
-Event Metadata
-Each event published by the Dispatcher Service contains critical metadata for routing and processing:
-
-Trade ID: Unique identifier for the trade.
-Channel: The source or method of trade (e.g., MOSAIC_DOWN, EMS, FILE_BASED).
-Event Type: Describes the event's purpose (e.g., CONTINGENCY, REAL_TIME).
-Payload:
-Transformed trade details.
-Additional file metadata (if applicable).
-Example Metadata:
-
-
-{
-    "tradeId": "123456",
-    "clientId": "7890",
-    "eventType": "CONTINGENCY",
-    "channel": "MOSAIC_DOWN",
-    "payload": {
-        "tradeDetails": { ... },
-        "fileMetadata": { ... }
-    }
-}
-
-
-Design Patterns Used
-Strategy Pattern:
-
-Used in the Consumer Service to dynamically process events based on Channel and Event Type.
-Publisher-Subscriber Pattern:
-
-Implemented in the Dispatcher Service and Queue layer for event-driven communication.
-Plugin-Based Architecture:
-
-Allows easy integration of new trade channels (e.g., EMS, REST APIs) by adding new consumer plugins.
-Key Advantages
-Scalability:
-
-Queues ensure the system can handle high loads and bursts of events.
-Extensibility:
-
-Adding support for new trade channels (e.g., EMS, REST APIs) requires minimal effort by creating new plugins.
-Fault Tolerance:
-
-The queue/topic layer ensures durability, retry mechanisms, and resilience against temporary failures.
-Dynamic Routing:
-
-Dispatcher Service enriches events with metadata, enabling consumers to route and process them dynamically.
-Decoupled Architecture:
-
-Each service operates independently, allowing easy maintenance and updates.
-Future Enhancements
-Add support for new trade channels, such as:
-REST APIs for real-time trades.
-Additional file-based systems.
-Integrate monitoring and alerting using tools like Prometheus and Grafana.
-Implement advanced queue configurations (e.g., Dead Letter Queues, Priority Queues).
+On the release day, due to concerns about safety and multiple technical checkouts, I agreed to proceed with a partial release instead of a full release.
+It was assumed that the data sync process would not delete existing GS Fund links, but this assumption proved to be incorrect.
+During onshore hours, Ishaan identified the gap.
+The issue was resolved by executing the pre-existing DACT query to insert all missing records.
+Next Steps
+Run the new Autosys job as soon as possible without any further delays.
+Finalize and review the release plan at least one day prior to the release to avoid last-minute changes.
+Ensure that all critical technical steps are validated during the tech checkout to avoid escalations, such as the one raised by the SS Team.
