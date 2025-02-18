@@ -1,30 +1,26 @@
+Subject: Availability for Business Checkout – Thursday, 8:30 AM IST
 
-# Define input and output files
-$inputFile = "urls.txt"
-$outputFile = "result.txt"
+Hi Renee and Thomas,
 
-# Create the output file if it doesn't exist (or clear it if it exists)
-if (-not (Test-Path $outputFile)) {
-    New-Item -Path $outputFile -ItemType File
-} else {
-    # Clear the output file if it exists
-    Clear-Content -Path $outputFile
-}
+I am planning to run the AutoSuggest job and would like to have a quick business checkout before or afterward. Could you please confirm if someone from the SS team will be available at 8:30 AM IST on Thursday?
 
-# Read each URL from urls.txt and check status
-Get-Content $inputFile | ForEach-Object {
-    $url = $_
-    try {
-        # Make the request
-        $response = Invoke-WebRequest -Uri $url -Method GET -UseBasicParsing
-        # Output 200 URLs
-        "$url returned $($response.StatusCode)" | Out-File -Append $outputFile
-    }
-    catch {
-        # If there's an error, output the failed request
-        "$url failed with error: $($_.Exception.Message)" | Out-File -Append $outputFile
-    }
-}
+We just need to compare the share class link content before and after the job run to ensure everything looks as expected.
 
-# Output location of result file
-Write-Output "Results saved to $outputFile"
+Please let me know if this timing works for you or if we need to adjust.
+
+Thanks,
+Angad
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+Subject: Sign-off Request for Autosys Job Release
+
+Hi Ishaan and Renee,
+
+We are planning to release the Autosys job in production, and I wanted to check if everything is in place and we are good to go.
+
+Once we have your sign-off, I will plan to trigger the job. Please let me know if we have any open questions.
+
+Thanks,
+Angad
