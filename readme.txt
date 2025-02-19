@@ -1,26 +1,12 @@
-Subject: Availability for Business Checkout – Thursday, 8:30 AM IST
+JIRA Summary:
+Evaluate Feasibility of Asynchronous Logging for Trade Service
 
-Hi Renee and Thomas,
+JIRA Description:
+Currently, the Trade service relies on synchronous logging, which may contribute to performance bottlenecks due to blocking operations. This ticket aims to assess the feasibility of adopting asynchronous logging to optimize log processing without impacting service stability.
 
-I am planning to run the AutoSuggest job and would like to have a quick business checkout before or afterward. Could you please confirm if someone from the SS team will be available at 8:30 AM IST on Thursday?
+Scope of work:
 
-We just need to compare the share class link content before and after the job run to ensure everything looks as expected.
-
-Please let me know if this timing works for you or if we need to adjust.
-
-Thanks,
-Angad
-
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
-
-Subject: Sign-off Request for Autosys Job Release
-
-Hi Ishaan and Renee,
-
-We are planning to release the Autosys job in production, and I wanted to check if everything is in place and we are good to go.
-
-Once we have your sign-off, I will plan to trigger the job. Please let me know if we have any open questions.
-
-Thanks,
-Angad
+Analyze the current logging mechanism and identify high-impact synchronous log points.
+Evaluate potential asynchronous logging solutions (e.g., Log4j2 AsyncAppender, JUL async handlers) and their suitability for Trade service.
+Assess the impact on performance, resource utilization, and log integrity.
+Provide recommendations on whether to proceed with implementation.
