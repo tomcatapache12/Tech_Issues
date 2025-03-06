@@ -1,7 +1,3 @@
-Last year, I created a ticket to migrate all existing QA AppProxy load balancers to the new iBoss LB URL. I see that most of them have been completed, except for one assigned to Impreet—could you please confirm its status?
+This task isn't specifically assigned to me; I was just distributing it at a high level since the usage is found in both GTAM and external vendor-related services. It can be picked up by the appropriate pod. If TechRisk can take it up, that works well, but it can also be handled by any relevant team, including GTAM.
 
-Additionally, it appears that some applications in the liquidity environment are still using direct hostnames instead of the Proxy LB URL.
-
-To address this, I am looping in the relevant team members to review the repositories and ensure that all applications are updated accordingly.
-
-Let me know if you need any further details.
+I am leaving this decision to the respective pod leads to determine the best ownership. Please feel free to proceed accordingly.
