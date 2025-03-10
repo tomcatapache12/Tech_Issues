@@ -1,12 +1,17 @@
-Hi [Manager’s Name],
+Description:
+We are working on integrating the existing SRE solution with GTAM backend processes to ensure consistent monitoring and health checks across the platform. This task is part of our existing roadmap for SRE and DevEx.
 
-Yes, this task is already part of our roadmap, and we are actively working on it. We’ve already picked it up, and Vinay is assigned to this initiative. The solution we’re building is aligned with the unified approach we've applied for Mosaic to ensure consistency across the platform.
+Scope of Work:
+Splunk Alerts:
 
-The task is being tackled in two main parts:
+Leverage Splunk Alerts for real-time monitoring and issue detection.
+Prober Solution:
 
-We’re planning to leverage Splunk Alerts for monitoring.
-For the prober solution, we’re thinking of utilizing a Prometheus endpoint for our backend processes. We’ll provide more detailed information once we finalize and complete our approach.
-We’ll provide an update once we start implementing these changes. Let me know if you need further details in the meantime.
-
-Best regards,
-Angad
+Plan to integrate a prober solution using a Prometheus endpoint for GTAM backend processes.
+Finalize the approach and provide detailed information once the solution is confirmed.
+Owner: Vinay
+Priority: Medium
+Labels: SRE, DevEx, Monitoring, GTAM
+Acceptance Criteria:
+Splunk Alerts are configured and functioning for GTAM backend processes.
+Prometheus-based prober solution is integrated and monitoring backend health.
