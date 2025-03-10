@@ -45,3 +45,11 @@ This will establish a connection and mark the peer as "Up."
 ✅ Expected Outcome
 Once authentication is successful, the peer should switch to a "Healthy" state.
 The cluster master should now reflect the correct status for the peer.
+
+
+
+
+Next Steps
+A ticket has been created to investigate the feasibility of automatically registering peers when they become available.
+Further updates will be shared once the analysis is complete.
+
