@@ -47,6 +47,28 @@ Once authentication is successful, the peer should switch to a "Healthy" state.
 The cluster master should now reflect the correct status for the peer.
 
 
+Subject: Steps to Resolve Splunk Peer "Down" State Issue
+
+Hi Team,
+
+If you encounter Splunk peers showing as "Down" in the dashboard, it is happening because the peer was not activated when the master started. As a result, the peer was not registered at that time and was marked as "Down." To resolve this, you need to manually authenticate and register the peer.
+
+Please follow the steps outlined in the Confluence page below to fix the issue:
+
+👉 Steps to Resolve Splunk Peer "Down" State
+
+Summary:
+
+The issue occurs because the peer was not available when the master started, causing it to miss the registration process.
+A ticket has been created to analyze the feasibility of automatically registering peers as "Up" once they become available or introducing a delay to allow peers to register before marking them as down.
+Please feel free to reach out if you have any questions or need further assistance.
+
+Best regards,
+Angad
+
+
+
+
 
 
 Next Steps
