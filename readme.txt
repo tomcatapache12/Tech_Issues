@@ -1,56 +1,54 @@
-Epic: Enable TLS for Service-to-Service Authentication in Mosaic Services
-Epic Name: Enable TLS for Internal Service Communication in Mosaic
+Subject: Proposal: MVP Scope for Mosaic Contingency Platform
 
-Epic Description:
-To enhance the security posture of Mosaic services, we aim to enable mTLS (Mutual TLS) for all internal service-to-service communications. This will ensure that only trusted services can communicate with each other, and all traffic is encrypted in transit.
+Hi [Team/All],
 
-🎯 Goals:
-Enable TLS between all Mosaic backend services.
+As part of our initiative to build a Contingency Platform for Mosaic, this email outlines the proposal for the MVP along with the initial scope we aim to cover in the first phase.
 
-Use client-side certificates for mutual authentication.
+🎯 MVP Objective
+To ensure continuity of trade flows and settlement in case of system disruptions by providing contingency paths across key areas — not assuming failure, but enabling fallback when needed.
 
-Leverage secure keystore/truststore management (e.g., Vault, Kubernetes secrets).
+📌 Initial Scope – MVP Phase
+1. Contingency Strategy: Direct Connectivity to TA
+Set up fallback paths to enable trade submission directly to the Transfer Agent (TA) or via Calastone. Applicable scenarios:
 
-Update service configurations to support mTLS (e.g., Spring Boot configs, RestTemplate/WebClient).
+GS Onshore
 
-Roll out gradually with backward compatibility and fallback strategy.
+GS Offshore
 
-Monitor traffic and alerting for mTLS handshake failures.
+Non-GS Onshore (Calastone connectivity if required)
 
-📦 Deliverables:
-TLS certificates issued via <CA tool> (e.g., Vault/HashiCorp, AWS ACM).
+Non-GS Offshore (Calastone connectivity if required)
 
-Keystore and truststore mounted in pods/services.
+This includes supporting manual intervention without relying on Mosaic UI or downstream automation.
 
-Updated configs for:
+2. Trade Retrieval in Case of Queue/API Outage
+In the event of any failure in queues, APIs, or upstream systems, the platform should allow:
 
-RestTemplate/WebClient clients.
+Fetching impacted trades
 
-Server-side SSL config (Tomcat/Jetty/Netty).
+Filtering based on source attributes such as trade channel, client, etc.
 
-Unit/integration tests for secure communication.
+Ensuring completeness of trade data for fallback operations
 
-Updated documentation for future onboarding.
+3. Acknowledgment & Settlement Considerations
+Incorporate acknowledgment and settlement dependencies to ensure end-to-end trade completion in contingency mode:
 
-Monitoring dashboards and alerts on TLS metrics.
+Cash Sweep
 
-📍 Milestones / Stories:
-[SPIKE] Feasibility study and impact analysis for enabling mTLS in Mosaic
+BofA acknowledgments
 
-Generate TLS certs using internal CA
+Citi acknowledgments
 
-Configure keystore/truststore in Mosaic backend services
+These acknowledgments must be available in the fallback flow to prevent settlement issues.
 
-Enable mTLS on server-side ports
+📝 Supporting Context
+As per our discussion with the SS Team, we understand that in current failure scenarios, trades are placed directly with the TA via phone calls.
 
-Update all RestTemplate/WebClient clients to use TLS
+For onshore and offshore, the SS team reaches out to the TA manually upon failure.
 
-Implement retry logic/fallback in case of handshake failure
+In the offshore flow, we already have the capability to upload a file directly to the TA, which can be extended or streamlined in our MVP.
 
-Validate connectivity in lower environments (QA, UAT)
+Let me know if there’s anything to add or refine. This scope will also be documented on Confluence under the “Contingency Platform” section.
 
-Add metrics/logging/alerts for TLS handshake and cert expiry
-
-Rollout mTLS to production via feature flag
-
-Update Confluence with setup and troubleshooting guide
+Best regards,
+[Your Name]
