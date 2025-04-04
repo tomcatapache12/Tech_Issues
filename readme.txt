@@ -1,8 +1,29 @@
-I have built an OKR framework for the Mosaic UI Down scenario, covering key objectives, associated tasks, and expected outcomes. The OKRs outline a structured approach to designing a scalable contingency framework, handling trade inbound and outbound cases, ensuring secure authentication, and establishing monitoring and recovery mechanisms.
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
-We can walk through the OKRs and tasks to identify the top KPIs that align with our goals. This will help us define measurable outcomes and track progress effectively. We will continue to refine and expand the OKRs as the project evolves and based on fulfillment.
+public class KeepAlive {
+    public static void main(String[] args) {
+        try {
+            Robot robot = new Robot();
+            long end = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(3);
 
-You can find the detailed OKR document in the Confluence link below:
-👉 Mosaic Contingency - OKR
+            while (System.currentTimeMillis() < end) {
+                // Move mouse slightly to simulate activity
+                Point location = MouseInfo.getPointerInfo().getLocation();
+                int x = location.x;
+                int y = location.y;
 
-Happy to discuss this further in detail tomorrow.
+                robot.mouseMove(x + 1, y);
+                Thread.sleep(500);
+                robot.mouseMove(x - 1, y);
+
+                // Wait for 60 seconds before next activity
+                Thread.sleep(60_000);
+            }
+
+            System.out.println("Done keeping session alive for 3 hours.");
+        } catch (AWTException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
