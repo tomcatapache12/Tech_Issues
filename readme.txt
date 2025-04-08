@@ -1,50 +1,6 @@
-Date: [Insert Date]
-Minutes of Meeting:
+GS Fund (Mosaic System Reconciliation):
+When the PA system is down for GS funds, the team manually evaluates the net flow or net value for any trade and informs the Portfolio Managers (PMs). Currently, this reconciliation process is manual, and the post-reconciliation capability is handled manually as well. The team follows a set of steps to perform this reconciliation, ensuring that the trades are accurately processed despite the PA system being unavailable.
 
-Requirement of Onsure-like Tool for Offshore:
-Thomas highlighted the need for a tool similar to the one currently used in Onsure for TA contingency. The existing tool helps avoid manual calculation of net value or net flow before sending details to the Portfolio Manager. Rini was suggested as the right person to help explain how it functions in Onsure.
+Non-GS Fund (Mosaic System Reconciliation):
+For non-GS funds, when the TA system goes down, trades are directly placed at Calastone. Once the TA system resumes, the messages that were queued during the downtime are sent to TA. To prevent these trades from being transmitted to Calastone again, they are controlled through a "trade TFA screen," which ensures that manually transmitted trades aren't re-sent to Calastone. Upon resumption of the TA system, the team manually reconciles the transactions, marking them as successful once they are entered into the TFA screen, completing the reconciliation process.
 
-Post-Reconciliation Capability for GS and Non-GS Funds:
-An additional scope point was proposed: enabling post-reconciliation capabilities for both GS and non-GS funds when TA is down. Currently, this process is manual.
-
-Formats Used by Offshore Clients:
-Thomas suggested collecting all formats that clients use for Offshore funds (both GS and non-GS) in failure scenarios. These formats will be useful for further analysis.
-
-Suggestions Around TA Downtime Scenarios:
-
-TA-down scenarios are the most frequent failure cases and were emphasized as the area to consider first.
-
-FTP capability at the TA site can be explored to replace manual file upload steps, similar to the existing dividend process.
-
-The email alerts received when TA is down should ideally contain data in a format similar to Calastone, to make downstream processes smoother.
-
-Reference to Income Contingency Screen:
-A reference was made to an "income contingency screen." Clarification pending from Thomas.
-
-Class Takeaway:
-
-Rini to help with details on Onsure tool.
-
-Suggested inclusion of post-reconciliation capability in MVP scope.
-
-Recommendation to collect all current Offshore client data formats.
-
-File transfer via FTP and Calastone-compatible alert formats discussed.
-
-Attendees:
-
-Thomas
-
-Angad
-
-Rini (for reference)
-
-Playback Blocker or Priorities:
-
-Clarify functionality of Onsure tool with Rini.
-
-Confirm "income contingency screen" with Thomas.
-
-Collect current formats from clients for GS and non-GS Offshore funds.
-
-Evaluate TA-down handling approaches (FTP, alert formatting).
