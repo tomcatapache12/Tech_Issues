@@ -1,30 +1,26 @@
-Hi [Name],
+Hi All,
 
-Thanks for highlighting the need around OpenAPI and request/response logging for the Trait service.
+Following up on our ongoing discussion regarding the Log4j upgrade, I had a detailed conversation with Raghuvir today to align on the immediate next steps.
 
-Building on that, I’d like to propose a platform-wide approach where we extend our existing core library to provide reusable support for:
+As discussed:
 
-🔹 OpenAPI (Swagger) Integration
-Preconfigured Springdoc + Swagger setup for consistent and auto-generated API documentation.
+I have initiated a detailed review of the MR, which currently involves 162 file changes. I've already provided some initial comments, many of which Raghuvir has addressed. The review is still in progress, and I will continue to go through it thoroughly over the coming days.
 
-Services can override metadata such as title, description, version, and contact details as needed.
+Nagesh Gurudutt is supporting Raghuvir on the Keystone execution side.
 
-🔹 Request/Response Logging Filter
-A standardized filter to log incoming requests and outgoing responses in a structured, uniform format.
+From my side, I’m focusing on the MR review and have also shared guidance with Raghuvir on how to identify which scripts were modified and where they are being used within the project. Specifically, he can search for the modified scripts within the GTEM project and trace which Autosys jobs they are associated with to ensure proper testing coverage.
 
-Supports toggling via configuration and can include correlation ID propagation for traceability.
+For the Java class-related changes, the GTEM team can assist in validating if these classes are bound to any business flows and help test their execution where applicable.
 
-🔍 Key Benefits
-Promotes consistency and observability across all Spring Boot services.
+For the script-level changes, as mentioned earlier, Raghuvir can locate the relevant Autosys jobs through search. Harmeet is also supporting on the Java side and helping identify the correct Keystone instances involved with the script executions.
 
-Reduces duplication of boilerplate code and improves maintainability.
+Going forward, Raghuvir will proceed with the verification and testing across both key areas:
 
-Makes it easier for new services to adopt best practices out-of-the-box.
+Java class changes — with help from GTEM where needed.
 
-We can implement this in a way that’s opt-in and non-intrusive, with flexibility for each service to enable or override the defaults as required.
+Script changes — by tracing associated Autosys jobs and testing accordingly.
 
-Let me know your thoughts — happy to collaborate on defining the initial structure and rollout strategy.
+Thanks everyone for your continued support. Please feel free to reach out if any further assistance is required.
 
 Best regards,
-Angad
-Platform Lead
+Anga
