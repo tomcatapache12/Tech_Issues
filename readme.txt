@@ -1,16 +1,37 @@
-ubject: Recurring Issue with Document Service – Missing Required Documents
+Here's a professionally worded, polite email you can send to communicate the situation without assigning blame:
 
-Hi [MD's Name],
 
-As discussed, I wanted to summarize the recurring issue we’re facing with the Document Service.
+---
 
-We’ve consistently observed cases where required documents are not being returned from the Document Service, resulting in downstream issues and manual escalations. This has become a pattern and needs attention.
+Subject: Deployment Issue Identified in Non-Prod – Seeking Approval for Next Steps
 
-The job responsible for fetching documents uses both ShareClass ID and PB Number as fallback identifiers. Despite this logic being in place, we're still seeing failures in retrieving the necessary documents.
+Hi Bhagavathi and Trupti,
 
-The most recent occurrence was for ShareClass ID: zyz.
+Hope you're doing well.
 
-It may be worth engaging the Document Service team for a deeper investigation and to work toward a long-term fix. I’m happy to help with documenting these cases and creating a runbook until a permanent solution is implemented.
+We’ve identified an issue during the non-prod deployment that was not caught during dev testing or regression. After evaluating the impact and possible options, we’d like to propose the following two paths forward and seek your guidance:
+
+1. Proceed with deployment of all services except the outbound service, which can be kept on the previous version as there are no changes in this release for it.
+
+This would introduce a slight inconsistency in deployed versions across services.
+
+We would need your approval to move ahead with this approach.
+
+
+
+2. Revert the recent changes and plan for a fresh round of regression testing, followed by a clean deployment.
+
+This will ensure consistency but will require additional time for testing and validation.
+
+
+
+
+Please let us know your preferred option, and we’ll proceed accordingly.
 
 Best regards,
 Angad
+
+
+---
+
+Let me know if you'd like to include any specific issue description or Jira ID for tracking.
