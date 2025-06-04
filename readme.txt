@@ -1,52 +1,55 @@
-EPIC: Contingency UI & Access Control
-|| Story || Comments ||
-| Create Contingency UI (MVP) | File upload, preview, enrichment trigger, result download |
-| Add support for Authn/Authz using CFT Refstack | Limit access to assistant team; leverage existing RBAC |
-| Create UAT plan for assistant team dry runs | Real data + guided flows |
-| Document UI flow & expected user actions | For onboarding assistant team |
-| Define SLOs for UI responsiveness | e.g., UI should respond under 2s for file upload preview |
+# Contingency Project - Epic and JIRA Story Breakdown
 
-🧩 EPIC: API Gateway & Lambda Architecture
-|| Story || Comments ||
-| Create API Gateway | Expose upload + enrich endpoints |
-| Create Upload API Lambda | Stores uploaded file and metadata |
-| Create Enrich API Lambda | Converts file to TA format using Dynamo lookup |
-| Set up CORS/Auth policies for APIs | For UI integration |
-| Define retry strategy or response codes | Even though fallback is none, logging must be clear |
+## 🧩 EPIC: Contingency UI & Access Control
 
-🧩 EPIC: Cross-Account Integration (AMS DynamoDB)
-|| Story || Comments ||
-| Configure IAM role for cross-account access | Between Mosaic Contingency and AMS |
-| Test lookup integration from Enrich Lambda | Validate fund mapping, TA formats |
-| Define schema and version control for Dynamo entries | So format changes are manageable |
+1. Build Contingency UI for File Upload, Preview, and Enrichment  
+2. Build UI using GS Toolkit for Design Consistency  
+3. Integrate Authn/Authz with CFT Refstack for Secure Access  
+4. Create UAT Plan for Assistant Team Dry Runs  
+5. Document End-to-End UI Workflow for Assistant Team  
+6. Define UI SLOs for Responsiveness and Upload Preview Latency  
 
-🧩 EPIC: Observability & Operational Excellence
-|| Story || Comments ||
-| Add Splunk alerts for file upload/enrich failures | Core integration health |
-| Build health-check job (integration test style) | Upload test file daily, alert on failure |
-| Set up Slack/Email alerting pipeline | Include errors + daily success heartbeat |
-| Define & track SLOs for enrichment latency & success rate | e.g., 99% enrichment success within 60s |
-| Set up end-to-end automated test pipeline | E2E coverage for all file types and flows |
+## 🧩 EPIC: API Gateway & Lambda Architecture
 
-🧩 EPIC: File Collection & Scenarios
-|| Story || Comments ||
-| [GS Fund] Collect files – Offshore (Mosaic Down) | PM report-backed |
-| [GS Fund] Collect files – Onshore (Mosaic Down) | Same structure but different fund mapping |
-| [Non-GS Fund] Collect files – Offshore (Casie Down) | Will involve TA variations |
-| [Non-GS Fund] Collect files – Onshore (SS&C Down) | Includes client-initiated scenarios |
-| Finalise format mapping + edge cases | For all above files |
+7. Set Up API Gateway for Upload and Enrich Endpoints  
+8. Develop Upload API Lambda to Handle File Metadata  
+9. Develop Enrich API Lambda for TA Format Conversion  
+10. Configure CORS and Authentication Policies for APIs  
+11. Define Retry Strategy and Standardized Response Codes for API Failures  
 
-🧩 EPIC: Fallback Connectivity – Feasibility
-|| Story || Comments ||
-| Analyse Calastone connectivity – fallback when Casie Down | For Non-GS offshore |
-| Analyse BNY connectivity – fallback when SS&C Down | For Non-GS onshore |
-| Propose automated upload route if feasible | SFTP/API based |
-| Define what we support in Onshore PM reports but not Offshore | Document capability gap |
+## 🧩 EPIC: Cross-Account Integration (AMS DynamoDB)
 
-🧩 EPIC: Documentation
-|| Story || Comments ||
-| Document input/output format specs | Per fund type and region |
-| Define onboarding guide for assistant team | Especially for contingency portal usage |
-| Maintain lookup table structure versioning | For long-term maintainability |
-| Confluence page linking all components | UI → API → Enrich → Dynamo → Output |
+12. Create IAM Role for Cross-Account Access to AMS DynamoDB  
+13. Implement Lookup Integration from Enrich Lambda to AMS DynamoDB  
+14. Define Schema and Version Control for Dynamo Lookup Table  
 
+## 🧩 EPIC: Observability & Operational Excellence
+
+15. Add Splunk Alerts for Upload and Enrich Lambda Failures  
+16. Build Daily Health-Check Job to Validate Upload and Enrichment Flow  
+17. Integrate Slack/Email Alerts for System Failures and Success Heartbeat  
+18. Define and Track SLOs for Enrichment Success Rate and Latency  
+19. Implement End-to-End Test Automation for File Processing Workflow  
+
+## 🧩 EPIC: File Collection & Scenarios
+
+20. Collect Sample Files – GS Funds Offshore (Mosaic Down Scenario)  
+21. Collect Sample Files – GS Funds Onshore (Mosaic Down Scenario)  
+22. Collect Sample Files – Non-GS Funds Offshore (Casie Down Scenario)  
+23. Collect Sample Files – Non-GS Funds Onshore (SS&C Down Scenario)  
+24. Finalize Format Mapping and Edge Cases Across All File Types  
+
+## 🧩 EPIC: Fallback Connectivity – Feasibility
+
+25. Analyze Calastone Connectivity as Fallback for Casie Down (Non-GS Offshore)  
+26. Analyze BNY Connectivity as Fallback for SS&C Down (Non-GS Onshore)  
+27. Evaluate Feasibility of Using TIP File for Onshore Automation  
+28. Propose Automated Upload Route via SFTP/API if Feasible  
+29. Document Feature Gaps: Onshore vs Offshore PM Reports  
+
+## 🧩 EPIC: Documentation
+
+30. Document Input/Output File Specifications for Each Fund Type  
+31. Create Onboarding Guide for Assistant Team Using Contingency UI  
+32. Maintain Version Control and Schema for Dynamo Lookup Table  
+33. Build a Master Confluence Page Linking All Components (UI → API → Enrich → Dynamo)  
