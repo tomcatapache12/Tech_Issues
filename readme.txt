@@ -1,14 +1,40 @@
-Hi team,
-Sharing a quick summary of next steps for the intern project. Please feel free to suggest additions or changes.
+dependencies {
+    implementation 'org.glassfish.jersey.core:jersey-server:3.1.2'
+    implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:3.1.2'
+    implementation 'org.glassfish.jersey.inject:jersey-hk2:3.1.2'
+}
 
-We'll list expected metrics separately for Coordinator and Worker roles – this will help in tracking and evaluating contributions more effectively.
 
-Complete the basic local setup for gtam-uplift so we can test and iterate independently.
 
-We can reuse the existing service port and expose the logic through a separate endpoint.
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
-Scope clarification – we’ll finalize the target services, tentatively starting with what Nitesh had mentioned.
+@Path("/hello")
+public class HelloResource {
 
-Required changes will be made in the common config, which will be shared across workers for consistency and reusability.
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return "Hello from Jersey!";
+    }
+}
 
-Let me know your thoughts.
+
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+
+import java.net.URI;
+
+public class Main {
+    public static void main(String[] args) {
+        final String BASE_URI = "http://localhost:8080/";
+        final ResourceConfig config = new ResourceConfig().packages("com.example");
+
+        HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), config);
+        System.out.println("Jersey app started at " + BASE_URI + "hello");
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
+    }
+}
