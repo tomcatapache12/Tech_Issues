@@ -1,43 +1,14 @@
+Hi team,
+Sharing a quick summary of next steps for the intern project. Please feel free to suggest additions or changes.
 
- Identifier Used for Non-GS Funds in TFA Screening
-Discussion:
-Clarified the identifier used in TFA screening to mark transactions as complete and prevent retransmission to Calastone or Bonibroker for non-GS funds.
+We'll list expected metrics separately for Coordinator and Worker roles – this will help in tracking and evaluating contributions more effectively.
 
-Resolution:
-The TA Account and Fund Code are used to identify trades and create the notification template. These identifiers are leveraged to mark the trade as complete in TFA.
+Complete the basic local setup for gtam-uplift so we can test and iterate independently.
 
-2. Offshore Client Formats in Case of CASIE Down
-Discussion:
-Explored the formats used when CASIE is down, apart from the existing PV format.
+We can reuse the existing service port and expose the logic through a separate endpoint.
 
-Response:
-There are three formats currently in use:
+Scope clarification – we’ll finalize the target services, tentatively starting with what Nitesh had mentioned.
 
-Citi File (XML): Used when Citi Mosaic is down and FinControl options are not working.
+Required changes will be made in the common config, which will be shared across workers for consistency and reusability.
 
-Contingency UI: Can be used when Mosaic Trade Service is down.
-
-Custom Template (SSTM): Data received via phone call, then entered into a standard internal template.
-
-Follow-up:
-BOFA format needs to be finalized; the responsible team will provide input.
-
-3. Feature Requirement for PM Report Value Calculation (Offshore)
-Discussion:
-Evaluated the usage of PM Reports UI for value calculation specific to offshore trades.
-
-Observations:
-
-UI currently supports both onshore and offshore filters.
-
-Onshore team does not use this feature actively.
-
-Further clarification is awaited from Thomas regarding required enhancements for offshore needs.
-
-4. Custom Template and Cassie Format Conversion
-Discussion:
-Raised question on why the custom template is not directly in Cassie format.
-
-Response:
-Cassie format involves complex data structures. Hence, the teams prefer working with a fixed-format template, which is then looked up and converted into Cassie-compatible data.
-
+Let me know your thoughts.
